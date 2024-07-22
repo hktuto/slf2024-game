@@ -38,8 +38,8 @@ onMounted(() => {
     height: 100vh;
     overflow: hidden;
     z-index: -1;
-    background: linear-gradient(224deg, #6bee85, #b7e789, #baf0d3, #73e4ad, #8fe4ee);
     background-size: 1000% 1000%;
+    background: linear-gradient(224deg, #6bee85, #b7e789, #baf0d3, #73e4ad, #8fe4ee);
 
     -webkit-animation: AnimationName 30s ease infinite;
     -moz-animation: AnimationName 30s ease infinite;

@@ -1,8 +1,9 @@
 <script lang="ts" setup>
-const { questions, loadQuestion, questionCount } = useGame()
+const { questions, loadQuestion, questionCount, confetti } = useGame()
 const router = useRouter()
 const selected = ref();
-
+import { Modal } from 'usemodal-vue3';
+let isVisible = ref(false);
 const question = computed(() => {
     const {ind} = useRoute().params
     if(questions.value.length === 0) {
@@ -15,16 +16,21 @@ function itemClicked(selectedItem:string) {
     selected.value = selectedItem
 }
 
-function checkAnswer(){
+async function checkAnswer(){
     if(selected.value && selected.value === question.value.answer){
         console.log("yeah")
         const {ind} = useRoute().params
         if(Number(ind) +1 >= questionCount) {
-            router.push('finish');
+            
+            router.push('/finish');
         }else{
+            confetti.addConfetti()
             router.push(`/game/${Number(ind) +1}`);
         }
     }else{
+        confetti.addConfetti({
+                emojis:['😅','😖','❌']
+            })
         console.log('lose')
     }
 }
@@ -42,7 +48,7 @@ function checkAnswer(){
                     {{ question.question }}
                 </div>
                 <div class="tipButtonContainer ">
-                    <button class="tipButton"></button>
+                    <button class="tipButton" @click="isVisible = true">必勝貼士</button>
                 </div>
                 <div class="answerContainer">
                     <div :class="{answerItem:true, selected:selected === 'A'}" @click="itemClicked('A')">
@@ -66,6 +72,13 @@ function checkAnswer(){
                     提交
                 </div>
             </div>
+
+            <Modal v-model:visible="isVisible" title="必勝貼士" :okButton="{text:'確定'}">
+                <div>
+                   <p> {{ question.knowledge }}</p>
+                   <small v-if="question.sourceUrl"> <a :href="question.sourceUrl" target="_blank">資料來源</a></small>
+                </div>
+            </Modal>
         </div>
     </div>
 </template>
@@ -74,6 +87,12 @@ function checkAnswer(){
 .pageContainer{
     height: 100%;
     overflow: auto;
+    padding-top: 24px;
+    :deep{
+        .modal-vue3-footer-cancel{
+            display: none !important;
+        }
+    }
 }
 .question{
     font-size: 1.5rem;
@@ -132,5 +151,37 @@ function checkAnswer(){
     font-size: 1.2rem;
     font-weight: 900;
     cursor: pointer;
+}
+
+.tipButton {
+    position: relative;
+    padding: 4px 12px;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    
+    background: linear-gradient(224deg, #6bee85, #b7e789, #baf0d3, #73e4ad, #8fe4ee);
+    background-size: 1000% 1000%;
+    font-size: 1rem;
+    -webkit-animation: AnimationName 5s ease infinite;
+    -moz-animation: AnimationName 5s ease infinite;
+    animation: AnimationName 5s ease infinite;
+    cursor: pointer;
+
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 69%}
+    50%{background-position:100% 32%}
+    100%{background-position:0% 69%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 69%}
+    50%{background-position:100% 32%}
+    100%{background-position:0% 69%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 69%}
+    50%{background-position:100% 32%}
+    100%{background-position:0% 69%}
 }
 </style>

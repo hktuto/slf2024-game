@@ -1,5 +1,5 @@
 import * as XLSX from "xlsx";
-
+import JSConfetti from 'js-confetti'
 type Question = {
     district: string,
     name:string,
@@ -16,7 +16,7 @@ type Question = {
 }
 
 export const useGame = () => {
-
+    const confetti = new JSConfetti()
     const questionCount = 10;
     const questions = useState<Question[]>('questions',()=>([]))
 
@@ -41,6 +41,7 @@ export const useGame = () => {
     return {
         loadQuestion,
         questionCount,
-        questions
+        questions,
+        confetti
     }
 }

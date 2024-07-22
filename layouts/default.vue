@@ -1,10 +1,16 @@
+<script lang="ts" setup>
+
+</script>
+
 <template>
 <div class="page">
-
     <slot />
+    
     <BgSpark />
 </div>
 </template>
+
+
 
 <style scoped>
 .page{
