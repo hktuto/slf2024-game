@@ -11,5 +11,6 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   ssr:false,
   css:['assets/style.scss'],
-  devtools: { enabled: true }
+  devtools: { enabled: true },
+   modules:['@hypernym/nuxt-anime']
 })

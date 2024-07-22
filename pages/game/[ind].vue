@@ -9,6 +9,8 @@ const question = computed(() => {
     if(questions.value.length === 0) {
         loadQuestion()
     }
+
+
     return questions.value[Number(ind)]
 })
 
@@ -34,6 +36,10 @@ async function checkAnswer(){
         console.log('lose')
     }
 }
+
+onMounted(() => {
+   
+})
 </script>
 
 <template>
@@ -84,6 +90,9 @@ async function checkAnswer(){
 </template>
 
 <style lang="scss" scoped>
+.questionContainer{
+    
+}
 .pageContainer{
     height: 100%;
     overflow: auto;
@@ -111,7 +120,7 @@ async function checkAnswer(){
 }
 .imageContainer{
     width:100%;
-    aspect-ratio: 16 / 10;
+    // aspect-ratio: 16 / 10;
     overflow: hidden;
     img {
         width:100%;
