@@ -20,11 +20,11 @@ async function checkAnswer(){
     if(selected.value && selected.value === question.value.answer){
         console.log("yeah")
         const {ind} = useRoute().params
+        confetti.addConfetti()
         if(Number(ind) +1 >= questionCount) {
-            
             router.push('/finish');
         }else{
-            confetti.addConfetti()
+            
             router.push(`/game/${Number(ind) +1}`);
         }
     }else{

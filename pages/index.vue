@@ -16,7 +16,10 @@ function startGame(){
 <template>
     <div class="pageContainer">
         <div class="center">
-            香港古今建築問答大賽
+            <div class="logo">
+                <img src="/logo.png" />
+            </div>
+            <h1>香港古今建築問答大賽</h1>
             <button @click="startGame">開始遊戲</button>
         </div>
     </div>
@@ -46,5 +49,8 @@ button{
     font-size: 1.2rem;
     font-weight: 900;
     cursor: pointer;
+}
+h1{
+    margin:0;
 }
 </style>
