@@ -3,7 +3,7 @@ const { questions, loadQuestion, questionCount, confetti } = useGame()
 const router = useRouter()
 const selected = ref();
 import { Modal } from 'usemodal-vue3';
-let isVisible = ref(true);
+let isVisible = ref(false);
 const width = ref(280);
 const question = computed(() => {
     const {ind} = useRoute().params
@@ -55,7 +55,7 @@ onMounted(() => {
                     {{ question.question }}
                 </div>
                 <div class="tipButtonContainer ">
-                    <button class="tipButton" @click="isVisible = true">必勝貼士</button>
+                    <button class="tipButton" @click="isVisible = true">先看必勝貼士</button>
                 </div>
                 <div class="answerContainer">
                     <div :class="{answerItem:true, selected:selected === 'A'}" @click="itemClicked('A')">
