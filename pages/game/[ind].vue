@@ -3,7 +3,7 @@ const { questions, loadQuestion, questionCount, confetti } = useGame()
 const router = useRouter()
 const selected = ref();
 import { Modal } from 'usemodal-vue3';
-let isVisible = ref(false);
+let isVisible = ref(true);
 const question = computed(() => {
     const {ind} = useRoute().params
     if(questions.value.length === 0) {
@@ -79,10 +79,10 @@ onMounted(() => {
                 </div>
             </div>
 
-            <Modal v-model:visible="isVisible" title="必勝貼士" :okButton="{text:'確定'}">
+            <Modal v-model:visible="isVisible" title="必勝貼士" :okButton="{text:'知道了'}">
                 <div>
                    <p> {{ question.knowledge }}</p>
-                   <small v-if="question.sourceUrl"> <a :href="question.sourceUrl" target="_blank">資料來源</a></small>
+                   <!-- <small v-if="question.sourceUrl"> <a :href="question.sourceUrl" target="_blank">資料來源</a></small> -->
                 </div>
             </Modal>
         </div>
@@ -137,10 +137,12 @@ onMounted(() => {
     display: flex;
     flex-flow: row nowrap;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     font-size:1.2rem;
     background: #fff;
     border-radius: 12px;
+    gap:12px;
+    line-height: 1;
     &:hover{
         border: 1px solid #2e9f45;
     }
@@ -168,7 +170,7 @@ onMounted(() => {
     border: 2px solid #fff;
     border-radius: 6px;
     
-    background: linear-gradient(224deg, #6bee85, #b7e789, #baf0d3, #73e4ad, #8fe4ee);
+    background: linear-gradient(224deg, #ee6b6b, #e789ce, #f0ceba, #e4d773, #ee8f8f);
     background-size: 1000% 1000%;
     font-size: 1rem;
     -webkit-animation: AnimationName 5s ease infinite;

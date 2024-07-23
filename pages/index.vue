@@ -20,7 +20,7 @@ function startGame(){
                 <img src="/logo.png" />
             </div>
             <h1>香港古今建築問答大賽</h1>
-            <button @click="startGame">開始遊戲</button>
+            <button @click="startGame">比賽開始</button>
         </div>
     </div>
 </template>
