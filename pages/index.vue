@@ -19,7 +19,7 @@ function startGame(){
             <div class="logo">
                 <img src="/logo.png" />
             </div>
-            <h1>香港古今建築問答大賽</h1>
+            <img class="title_logo" src="/title_1.png" />
             <button @click="startGame">比賽開始</button>
         </div>
     </div>
@@ -38,6 +38,9 @@ function startGame(){
     justify-content: flex-start;
     align-items: center;
     gap: 24px;
+}
+.title_logo{
+    width:100%;
 }
 button{
     border:0;

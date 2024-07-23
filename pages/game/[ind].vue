@@ -3,10 +3,11 @@ const { questions, loadQuestion, questionCount, confetti } = useGame()
 const router = useRouter()
 const selected = ref();
 import { Modal } from 'usemodal-vue3';
+const {ind} = useRoute().params
 let isVisible = ref(false);
 const width = ref(280);
 const question = computed(() => {
-    const {ind} = useRoute().params
+    
     if(questions.value.length === 0) {
         loadQuestion()
     }
@@ -45,6 +46,12 @@ onMounted(() => {
 
 <template>
     <div class="pageContainer">
+        <div class="header">
+            <img class="title_logo" src="/title_1.png" />
+            <div class="count">
+                {{ Number(ind) +1 }} /10
+            </div>
+        </div>
         <div v-if="question" class="questionContainer">
             <div  class="imageContainer">
                 <img :src="`/data/${question.image}`" />
@@ -91,13 +98,27 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
+.header{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+}
+.title_logo{
+    height: 40px;
+}
+.count{
+    text-align: right;
+    flex: 1 0 auto;
+}
 .questionContainer{
     
 }
 .pageContainer{
     height: 100%;
     overflow: auto;
-    padding-top: 24px;
+    // padding-top: 12px;
     :deep{
         .modal-vue3-footer-cancel{
             display: none !important;
