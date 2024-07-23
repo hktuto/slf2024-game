@@ -4,6 +4,7 @@ const router = useRouter()
 const selected = ref();
 import { Modal } from 'usemodal-vue3';
 let isVisible = ref(true);
+const width = ref(280);
 const question = computed(() => {
     const {ind} = useRoute().params
     if(questions.value.length === 0) {
@@ -38,7 +39,7 @@ async function checkAnswer(){
 }
 
 onMounted(() => {
-   
+    width.value = window.innerWidth > 600 ? 500 : 280;
 })
 </script>
 
@@ -79,7 +80,7 @@ onMounted(() => {
                 </div>
             </div>
 
-            <Modal v-model:visible="isVisible" title="必勝貼士" :okButton="{text:'知道了'}">
+            <Modal v-model:visible="isVisible" title="必勝貼士" :okButton="{text:'知道了'}" :width="width">
                 <div>
                    <p> {{ question.knowledge }}</p>
                    <!-- <small v-if="question.sourceUrl"> <a :href="question.sourceUrl" target="_blank">資料來源</a></small> -->
