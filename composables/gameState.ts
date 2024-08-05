@@ -27,7 +27,7 @@ export const useGame = () => {
     const HeritageQuestion = useState<Question[]>('HeritageQuestion',()=>([]))
     async function loadQuestion(){
         questions.value = [];
-        const file = await fetch('/data/question_template_fr Wing_photo inserted_2.xlsx').then(res => res.arrayBuffer());
+        const file = await fetch('/data/question_template_fr Wing_photo inserted_3.xlsx').then(res => res.arrayBuffer());
         const books = XLSX.read(file);
         const {Modern, Heritage} = books.Sheets
         modernQuestion.value = XLSX.utils.sheet_to_json(Modern, {header: 0})
