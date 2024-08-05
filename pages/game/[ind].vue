@@ -79,7 +79,7 @@ onMounted(() => {
                     <button class="tipButton" @click="showTip">小貼士</button>
                 </div>
                 <div v-if="retry > 0">
-                    還有一次回答機會
+                    還有一次補答機會
                 </div>
                 <div class="answerContainer">
                     <div :class="{answerItem:true, selected:selected === 'A'}" @click="itemClicked('A')">
