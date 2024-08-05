@@ -67,7 +67,7 @@ onMounted(() => {
             </div>
         </div>
         <div v-if="question" class="questionContainer">
-            <div  class="imageContainer">
+            <div  class="imageContainer fancyImage">
                 <img :src="`/data/${question.image}`" />
             </div>
             <div class="content">
@@ -77,9 +77,6 @@ onMounted(() => {
                 </div>
                 <div v-if="!viewTip" class="tipButtonContainer ">
                     <button class="tipButton" @click="showTip">小貼士</button>
-                </div>
-                <div v-else class="tipButtonContainer ">
-                    已看過小貼士
                 </div>
                 <div v-if="retry > 0">
                     還有一次回答機會
@@ -131,7 +128,7 @@ onMounted(() => {
 }
 .pageContainer{
     height: 100%;
-    overflow: auto;
+    overflow: visible;
     // padding-top: 12px;
     :deep{
         .modal-vue3-footer-cancel{

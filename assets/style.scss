@@ -15,4 +15,7 @@ body, html, #__nuxt {
     max-width: 600px;
     width:100%;
     margin:0 auto;
+    @media (max-width: 480px){
+        padding-inline: 24px;;
+    }
 }

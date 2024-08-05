@@ -15,7 +15,6 @@ const question = computed(() => {
 
 function nextLevel(){
     retry.value = 0;
-    viewTip.value = false;
     if(Number(ind) +1 >= questionCount) {
         router.push('/finish');
     }else{
@@ -29,20 +28,20 @@ function nextLevel(){
         <div class="header">
             <img class="title_logo" src="/title_1.png" />
             <div class="count">
-                小貼士
+                小知識
             </div>
             <div class="score">
                 得分 : {{ score }}
             </div>
         </div>
         <div v-if="question" class="questionContainer">
-            <div  class="imageContainer">
+            <div  class="imageContainer fancyImage">
                 <img :src="`/data/${question.image}`" />
             </div>
             <div class="content">
                 <p> {{ question.knowledge }}</p>
             </div>
-            <Button class="tipButton" @click="nextLevel">下一關</Button>
+            <Button class="tipButton" @click="nextLevel">下一題</Button>
         </div>
 
      </div>
@@ -69,7 +68,7 @@ function nextLevel(){
 }
 .pageContainer{
     height: 100%;
-    overflow: auto;
+    overflow: visible;
     // padding-top: 12px;
     :deep{
         .modal-vue3-footer-cancel{

@@ -25,7 +25,7 @@ const question = computed(() => {
             </div>
         </div>
         <div v-if="question" class="questionContainer">
-            <div  class="imageContainer">
+            <div  class="imageContainer fancyImage">
                 <img :src="`/data/${question.image}`" />
             </div>
             <div class="content">
@@ -58,7 +58,7 @@ const question = computed(() => {
 }
 .pageContainer{
     height: 100%;
-    overflow: auto;
+    overflow: visible;
     // padding-top: 12px;
     :deep{
         .modal-vue3-footer-cancel{

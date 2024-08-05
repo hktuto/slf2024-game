@@ -75,9 +75,10 @@ const scoreResult = computed(() => {
                 </div>
             </div>
             <p>遊戲完成，若想認識更多「香港古今建築」，可再玩一次。</p>
-            <small>鳴謝古物古蹟辦事處提供部分相片</small>
+            
             <button @click="replay">再玩一次</button>
             <button @click="goLibrary">圖書館資源選介</button>
+            <small>鳴謝古物古蹟辦事處提供部分相片</small>
         </div>
     </div>
 </template>

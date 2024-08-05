@@ -7,7 +7,7 @@ function startGame(){
     loadQuestion()
     const router = useRouter()
     router.push({
-        path:'/game/0'
+        path:'/introduction'
     })
 }
 
