@@ -100,9 +100,8 @@ function nextLevel(){
     }
 }
 .content{
-    @media (max-width: 640px) {
-        padding-inline: 24px;;
-    }
+    margin-block: 12px;
+
 }
 .answerItem{
     padding: 12px;
