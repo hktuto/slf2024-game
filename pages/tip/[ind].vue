@@ -1,12 +1,6 @@
 <script lang="ts" setup>
 const { questions, loadQuestion, questionCount, confetti, score, retry, viewTip } = useGame()
-const router = useRouter()
-const selected = ref();
-import { Modal } from 'usemodal-vue3';
 const {ind} = useRoute().params
-let isVisible = ref(false);
-const width = ref(280);
-
 
 const question = computed(() => {
     
@@ -17,50 +11,14 @@ const question = computed(() => {
 
     return questions.value[Number(ind)]
 })
-
-function itemClicked(selectedItem:string) {
-    selected.value = selectedItem
-}
-
-async function checkAnswer(){
-    if(selected.value && selected.value === question.value.answer){
-
-        const {ind} = useRoute().params
-        confetti.addConfetti()
-        if(retry.value > 0){
-            score.value += 5
-        }else{
-            score.value += 10
-        }
-        router.push(`/next/${Number(ind)}`);
-    }else{
-        confetti.addConfetti({
-                emojis:['😅','😖','❌']
-            })
-        if(retry.value > 0) {
-            router.push(`/next/${Number(ind)}`);
-        }
-        retry.value ++
-        console.log('lose')
-    }
-}
-
-function showTip(){
-    viewTip.value = true;
-    router.push(`/tip/${Number(ind)}`);
-}
-
-onMounted(() => {
-    width.value = window.innerWidth > 600 ? 500 : 280;
-})
 </script>
 
 <template>
-    <div class="pageContainer">
+     <div class="pageContainer">
         <div class="header">
             <img class="title_logo" src="/title_1.png" />
             <div class="count">
-                {{ Number(ind) +1 }} /10
+                小貼士
             </div>
             <div class="score">
                 得分 : {{ score }}
@@ -71,45 +29,14 @@ onMounted(() => {
                 <img :src="`/data/${question.image}`" />
             </div>
             <div class="content">
-
-                <div class="question">
-                    {{ question.question }}
-                </div>
-                <div v-if="!viewTip" class="tipButtonContainer ">
-                    <button class="tipButton" @click="showTip">小貼士</button>
-                </div>
-                <div v-else class="tipButtonContainer ">
-                    已看過小貼士
-                </div>
-                <div v-if="retry > 0">
-                    還有一次回答機會
-                </div>
-                <div class="answerContainer">
-                    <div :class="{answerItem:true, selected:selected === 'A'}" @click="itemClicked('A')">
-                        <div class="option">A</div>
-                        <div class="answer">{{ question.a }}</div>
-                    </div>
-                    <div :class="{answerItem:true, selected:selected === 'B'}" @click="itemClicked('B')">
-                        <div class="option">B</div>
-                        <div class="answer">{{ question.b }}</div>
-                    </div>
-                    <div :class="{answerItem:true, selected:selected === 'C'}" @click="itemClicked('C')">
-                        <div class="option">C</div>
-                        <div class="answer">{{ question.c }}</div>
-                    </div>
-                    <div :class="{answerItem:true, selected:selected === 'D'}" @click="itemClicked('D')">
-                        <div class="option">D</div>
-                        <div class="answer">{{ question.d }}</div>
-                    </div>
-                </div>
-                <div class="submitButton" @click="checkAnswer">
-                    提交
-                </div>
+                <p> {{ question.knowledge }}</p>
             </div>
-
+            <Button class="tipButton" @click="$router.back()">返回</Button>
         </div>
-    </div>
+
+     </div>
 </template>
+
 
 <style lang="scss" scoped>
 .header{
