@@ -38,8 +38,7 @@ function nextLevel(){
             <div  class="imageContainer fancyImage">
                 <img :src="`/data/${question.image}`" />
             </div>
-            <div class="content">
-                <p> {{ question.knowledge }}</p>
+            <div class="content" v-html="question.knowledge">
             </div>
             <Button class="tipButton" @click="nextLevel">下一題</Button>
         </div>

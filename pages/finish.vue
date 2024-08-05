@@ -49,7 +49,7 @@ const scoreResult = computed(() => {
     if(score.value <= 100){
         return {
             title:"傳說級",
-            content: '您對於香港建築的認識無人能及！有時間可以到圖書館閱讀更多不同種類的書籍！'
+            content: '您對於香港建築的認識無人能及！<br/>有時間可以到圖書館閱讀更多不同種類的書籍！'
         }
     }
 })
@@ -70,8 +70,7 @@ const scoreResult = computed(() => {
                 <div class="title">
                     {{ scoreResult?.title }}
                 </div>
-                <div class="content">
-                    {{ scoreResult?.content }}
+                <div class="content" v-html="scoreResult?.content">
                 </div>
             </div>
             <p>遊戲完成，若想認識更多「香港古今建築」，可再玩一次。</p>

@@ -28,8 +28,7 @@ const question = computed(() => {
             <div  class="imageContainer fancyImage">
                 <img :src="`/data/${question.image}`" />
             </div>
-            <div class="content">
-                <p> {{ question.knowledge }}</p>
+            <div class="content" v-html="question.knowledge">
             </div>
             <Button class="tipButton" @click="$router.back()">返回</Button>
         </div>
