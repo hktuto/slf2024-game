@@ -76,4 +76,7 @@ button{
     font-size: 1.2rem;
     margin-bottom: 12px;
 }
+li{
+    margin-bottom:12px;
+}
 </style>

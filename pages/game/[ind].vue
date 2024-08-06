@@ -78,7 +78,7 @@ onMounted(() => {
                 <div v-if="!viewTip" class="tipButtonContainer ">
                     <button class="tipButton" @click="showTip">小貼士</button>
                 </div>
-                <div v-if="retry > 0">
+                <div v-if="retry > 0" style="color:red; font-weight:700">
                     還有一次補答機會
                 </div>
                 <div class="answerContainer">
