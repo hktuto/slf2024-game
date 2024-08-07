@@ -73,7 +73,7 @@ const scoreResult = computed(() => {
                 <div class="content" v-html="scoreResult?.content">
                 </div>
             </div>
-            <p>遊戲完成，若想認識更多「香港古今建築」，可再玩一次。</p>
+            <p>遊戲完成，若想認識更多「香港特色建築」，可再玩一次。</p>
             
             <button @click="replay">再玩一次</button>
             <button @click="goLibrary">圖書館資源選介</button>
