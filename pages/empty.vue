@@ -9,7 +9,14 @@ const {loadQuestion } = useGame();
     <div class="pageContainer">
     </div>
 </template>
-
+<style >
+    .line-drawing-demo.cloud {
+        display: none!important;
+    }
+    .fullPage{
+        background: #000!important;
+    }
+    </style>
 <style scoped>
 .pageContainer{
     width:100%;
